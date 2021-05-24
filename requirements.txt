@@ -1,0 +1,6 @@
+boto3
+fastapi
+fire
+humanize
+mypy
+pyyaml
