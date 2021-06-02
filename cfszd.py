@@ -2,7 +2,7 @@
 # coding: utf-8
 
 from collections import OrderedDict
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 import os
 import zipfile
 
@@ -41,6 +41,9 @@ def extract_s3_object(res: Any) -> Optional[Any]:
 
 
 class App:
+    def list(self) -> List[str]:
+        return list(map(lambda it: it['StackName'], cfn_client.describe_stacks()['Stacks']))
+
     def template(self, stack_name: str) -> None:
         template = get_stack_template(stack_name)
         print(yaml.dump(template))
